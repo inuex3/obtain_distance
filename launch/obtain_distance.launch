@@ -1,0 +1,16 @@
+<launch>
+  <group ns="image_tutorial1">
+    <node pkg="obtain_distance" name="input_node" type="subscriber"/>
+    <node pkg="obtain_distance" name="output_node" type="publisher"/>
+  </group>
+  <group ns="image_tutorial2">
+    <node pkg="image_tutorial" name="input_node" type="subscriber"/>
+    <node pkg="image_tutorial" name="output_node" type="publisher"/>
+  </group>
+  <node pkg="image_tutorial" name="output_node" type="subscriber">
+    <remap from="image_data" to="data_stack"/>
+  </node>
+  <node pkg="image_tutorial" name="input_node" type="publisher">
+    <remap from="image_data" to="data_stack"/>
+  </node>
+</launch>
